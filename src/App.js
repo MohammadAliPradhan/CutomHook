@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import useFetch from './useFetch';
+import DifferentApi from './DifferentApi';
+
 
 function App() {
+
+  const [data] = useFetch("https://jsonplaceholder.typicode.com/todos")
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {data && data.map((item)=>{
+          return <p>{item.title}</p>
+          })}
+
+
+
+          <br/>
+          <br/>
+          <br />
+          <DifferentApi />
     </div>
   );
 }
